@@ -3,15 +3,15 @@ infisical:
 auth:
   type: "universal-auth"
   config:
-    client-id: "/run/secrets/infisical_universal_auth_client_id"
-    client-secret: "/run/secrets/infisical_universal_client_secret"
+    client-id: "/run/secrets/infisical-universal-auth-client-id"
+    client-secret: "/run/secrets/infisical-universal-auth-client-secret"
     remove_client_secret_on_read: false
 sinks:
   - type: "file"
     config:
       path: "/infisical-secrets/access-token"
 templates:
-  - source-path: /run/secrets/dot_env_secret_template
-    destination-path: /infisical-secrets/.env
+  - source-path: /run/secrets/nginx-home-page-template
+    destination-path: /infisical-secrets/index.html
     config:
       polling-interval: 60s

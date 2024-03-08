@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <h1>This file is rendered by Infisical agent template engine</h1>
+  <p>Here are the secrets that have been fetched from Infisical and stored in your volume mount</p>
+  <ol>
+    {{- with secret "<your-project-id-here>" "dev" "/" }}
+      {{- range . }}
+      <li>{{ .Key }}={{ .Value }}</li>
+      {{- end }}
+      {{- end }}
+  </ol>
+</body>
+
+</html>

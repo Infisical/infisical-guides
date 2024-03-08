@@ -1,0 +1,44 @@
+version: "3.1"
+
+services:
+  infisical-agent:
+    container_name: infisical-agnet
+    image: infisical/cli:0.18.0
+    command: agent --config=/run/secrets/infisical-agent-config
+    volumes:
+      - infisical-agent:/infisical-secrets
+    secrets:
+      - infisical-universal-auth-client-id
+      - infisical-universal-auth-client-secret
+      - infisical-agent-config
+      - nginx-home-page-template
+    networks:
+      - infisical_network
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - infisical-agent:/usr/share/nginx/html
+    networks:
+      - infisical_network
+
+volumes:
+  infisical-agent: 
+
+secrets:
+  infisical-universal-auth-client-id:
+    file: ./client-id
+  infisical-universal-auth-client-secret:
+    file: ./client-secret
+  infisical-agent-config:
+    file: ./infisical-agent-config
+  nginx-home-page-template:
+    file: ./nginx-home-page-template
+    
+
+networks:
+  infisical_network:
+
+  
