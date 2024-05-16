@@ -1,1 +1,1 @@
-# Infisical guide assets 
+# Infisical Guide Assets 
