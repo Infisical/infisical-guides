@@ -10,6 +10,11 @@ variable "ecs_task_execution_role_name" {
   default     = "myEcsTaskExecutionRole"
 }
 
+variable "ecs_task_role_name" {
+  description = "ECS task role name"
+  default     = "myEcsTaskRole"
+}
+
 variable "az_count" {
   description = "Number of AZs to cover in a given region"
   default     = "2"
@@ -22,7 +27,7 @@ variable "app_image" {
 
 variable "sidecar_image" {
   description = "Infisical CLI with agent"
-  default     = "infisical/cli:0.16.10"
+  default     = "infisical/cli:0.28.5"
 }
 
 variable "app_port" {
@@ -48,4 +53,3 @@ variable "fargate_memory" {
   description = "Fargate instance memory to provision (in MiB)"
   default     = "2048"
 }
-
