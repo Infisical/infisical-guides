@@ -1,0 +1,17 @@
+infisical:
+  address: https://app.infisical.com
+  exit-after-auth: true
+auth:
+  type: aws-iam
+sinks:
+  - type: file
+    config:
+      path: /infisical-agent/access-token
+templates:
+  - template-content: |
+      {{- with secret "5655f4f5-332b-45f9-af06-8f493edff36f" "dev" "/" }}
+      {{- range . }}
+      {{ .Key }}={{ .Value }}
+      {{- end }}
+      {{- end }}
+    destination-path: /infisical-agent/secrets

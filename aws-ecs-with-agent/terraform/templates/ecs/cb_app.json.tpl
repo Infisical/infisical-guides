@@ -58,12 +58,8 @@
     },
     "environment": [
       {
-        "name": "INFISICAL_UNIVERSAL_AUTH_CLIENT_ID",
-        "value": "${auth_client_id}"
-      },
-      {
-        "name": "INFISICAL_UNIVERSAL_CLIENT_SECRET",
-        "value": "${auth_client_secret}"
+        "name": "INFISICAL_MACHINE_IDENTITY_ID",
+        "value": "${machine_identity_id}"
       },
       {
         "name": "INFISICAL_AGENT_CONFIG_BASE64",
