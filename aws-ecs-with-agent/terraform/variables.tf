@@ -27,7 +27,7 @@ variable "app_image" {
 
 variable "sidecar_image" {
   description = "Infisical CLI with agent"
-  default     = "infisical/cli:0.28.5"
+  default     = "infisical/cli:0.30.0"
 }
 
 variable "app_port" {
