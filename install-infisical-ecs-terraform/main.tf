@@ -57,7 +57,7 @@ module "ecs_main_server" {
         }
 
         target_value = 60
-        scale_in_cooldown = 60
+        scale_in_cooldown = 900
       }
     }
 
@@ -70,7 +70,7 @@ module "ecs_main_server" {
         }
 
         target_value = 60
-        scale_in_cooldown = 60
+        scale_in_cooldown = 900
       }
     }
   }
