@@ -1,0 +1,31 @@
+---
+# Service account for Infisical to use for token review
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: infisical-token-reviewer
+  namespace: default
+---
+# ClusterRoleBinding to allow token review
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: infisical-token-reviewer-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+  - kind: ServiceAccount
+    name: infisical-token-reviewer
+    namespace: default
+---
+# Long-lived token for the reviewer service account
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: infisical-token-reviewer-token
+  namespace: default
+  annotations:
+    kubernetes.io/service-account.name: infisical-token-reviewer

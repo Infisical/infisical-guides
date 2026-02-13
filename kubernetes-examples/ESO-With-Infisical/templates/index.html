@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESO DEMO</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 640px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.05em;
+      color: #f8fafc;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .card-header {
+      padding: 1rem 1.5rem;
+      background: rgba(51, 65, 85, 0.5);
+      border-bottom: 1px solid #334155;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+    }
+
+    .secret-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #1e293b;
+      transition: background 0.15s;
+    }
+
+    .secret-row:last-child { border-bottom: none; }
+    .secret-row:hover { background: rgba(51, 65, 85, 0.3); }
+
+    .secret-key {
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #7dd3fc;
+    }
+
+    .secret-value {
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      max-width: 50%;
+      text-align: right;
+      word-break: break-all;
+    }
+
+    .secret-value.set {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+
+    .secret-value.unset {
+      background: rgba(239, 68, 68, 0.1);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      font-style: italic;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ESO DEMO</h1>
+    <p class="subtitle">External Secrets Operator &mdash; Environment Variables</p>
+
+    <div class="card">
+      <div class="card-header">Secrets</div>
+      {% for key, value in secrets.items() %}
+      <div class="secret-row">
+        <span class="secret-key">{{ key }}</span>
+        {% if value %}
+        <span class="secret-value set">{{ value }}</span>
+        {% else %}
+        <span class="secret-value unset">&lt;not set&gt;</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <p class="footer">Powered by Flask &bull; Running in Kubernetes</p>
+  </div>
+</body>
+</html>

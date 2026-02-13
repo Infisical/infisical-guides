@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eso-demo
+  labels:
+    app: eso-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eso-demo
+  template:
+    metadata:
+      labels:
+        app: eso-demo
+    spec:
+      containers:
+        - name: eso-demo
+          image: 162856940288.dkr.ecr.us-east-1.amazonaws.com/eso-demo:latest
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - secretRef:
+                name: eso-demo-secret
+                optional: true

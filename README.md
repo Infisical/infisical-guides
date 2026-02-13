@@ -1,17 +1,19 @@
 # Infisical Guides
 
-Production-ready Terraform examples and guides for Infisical secret management.
+Examples and guides for Infisical secret management — from Terraform boilerplate to hands-on Kubernetes demos.
 
 ## Repository Structure
 
 ```
 infisical-guides/
-├── terraform-examples/         # Complete Terraform boilerplate examples
+├── terraform-examples/         # Production-ready Terraform boilerplate
 │   ├── project-bootstrap/     # Complete project setup
 │   ├── static-secrets/        # Traditional secret management
 │   ├── dynamic-secrets/       # Temporary credential generation
 │   ├── secret-rotation/       # Enterprise credential rotation
 │   └── secret-syncing/        # External store synchronization
+├── kubernetes-examples/        # Hands-on Kubernetes demos
+│   └── ESO-With-Infisical/    # External Secrets Operator with Infisical
 └── README.md                  # This file
 ```
 
@@ -37,7 +39,7 @@ cd ../static-secrets
 
 ## Terraform Examples
 
-Our Terraform examples provide production-ready boilerplate for common Infisical use cases:
+Production-ready Terraform boilerplate for common Infisical use cases:
 
 | Example | Description | Complexity |
 |---------|-------------|------------|
@@ -46,6 +48,14 @@ Our Terraform examples provide production-ready boilerplate for common Infisical
 | [dynamic-secrets](terraform-examples/dynamic-secrets/) | Temporary database credentials | Advanced |
 | [secret-rotation](terraform-examples/secret-rotation/) | Automated credential lifecycle | Enterprise |
 | [secret-syncing](terraform-examples/secret-syncing/) | Sync to AWS, GitHub, and other services | Medium |
+
+## Kubernetes Examples
+
+Hands-on demos showing Infisical integrations in Kubernetes environments:
+
+| Example | Description |
+|---------|-------------|
+| [ESO-With-Infisical](kubernetes-examples/ESO-With-Infisical/) | Sync secrets from Infisical into Kubernetes using External Secrets Operator with Kubernetes Auth |
 
 ## For Most Teams
 
